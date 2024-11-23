@@ -9,6 +9,16 @@
 
 #define SIZE_MORE (5)
 
+typedef enum ReturnCode
+{
+    ACCEPTED = 0,
+    UNACCEPTABLE_PROTOCOL_VERSION = 1,
+    IDENTIFIER_REJECTED = 2,
+    SERVER_UNAVAILABLE = 3,
+    BAD_USERNAME_OR_PASSWORD = 4,
+    NOT_AUTHORIZED = 5
+} ReturnCode;
+
 /* 首部控制符 */
 typedef enum ControlType
 {
@@ -84,5 +94,9 @@ struct Message_t
     int read(const uint8_t &ch);
     void clear(void);
 };
+
+bool isvalid_clientid(const char *client_id, uint16_t len);
+
+char* generate_clientid(void);
 
 #endif

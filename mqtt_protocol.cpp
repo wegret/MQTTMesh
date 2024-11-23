@@ -38,7 +38,7 @@ int Message_t::read(const uint8_t& ch){
             remaining_length = buffer_len = res;
 
             if (remaining_length > buffer_size){    // 扩容
-                buffer_size = remaining_length;
+                buffer_size = remaining_length * 2 + 1;
                 buffer = (uint8_t*)realloc(buffer, buffer_size);
                 if (buffer == nullptr)
                     return MQTT_ERROR;
@@ -74,4 +74,36 @@ void Message_t::clear(){
     buffer = nullptr;
     buffer_size = buffer_len = 0;
     write_idx = nullptr;
+}
+
+
+//========================================== 工具函数 ==========================================
+
+/**
+ * 函数功能：判断client_id是否合法
+ * 传入参数：const char* client_id, uint16_t len
+ * 返回参数：是否合法
+ */
+bool isvalid_clientid(const char *client_id, uint16_t len){
+    if (len < 1 || len > 23)    // 长度不合法
+        return false;
+    for (int i = 0; i < len; i++){
+        if (!('0' <= client_id[i] && client_id[i] <= '9') && !('a' <= client_id[i] && client_id[i] <= 'z') && !('A' <= client_id[i] && client_id[i] <= 'Z'))
+            return false;
+    }
+    return true;
+}
+
+/**
+ * 函数功能：生成一个随机的client_id
+ * 传入参数：无
+ * 返回参数：生成的client_id
+ */
+char* generate_clientid(void){
+    char* client_id = (char*)malloc(24);
+    for (int i = 0; i < 23; i++){
+        client_id[i] = 'a' + rand() % 26;
+    }
+    client_id[23] = '\0';
+    return client_id;
 }

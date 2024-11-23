@@ -249,6 +249,15 @@ int main(int argc, char *argv[])
                                 break;
                             }
                         }
+
+                        // // 回发消息给客户端
+                        // int bytes_sent = send(client_fd, buffer, count, 0);
+                        // if (bytes_sent < 0) {
+                        //     perror("发送消息失败");
+                        //     client_remove(client_fd);
+                        // } else {
+                        //     printf("回发消息给 fd=%d: %s\n", client_fd, buffer);
+                        // }
                     }
                 }
             }

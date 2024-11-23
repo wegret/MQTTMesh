@@ -31,7 +31,6 @@ c = conn.cursor()
 # conn.commit()
 # conn.close()
 
-# 插入设备信息
 devices = [
     ('MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC', 'tester1', '113.45.173.169:33597', datetime.now().isoformat(), True),
     ('MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI', 'tester2', '113.45.173.169:58357', datetime.now().isoformat(), False)
@@ -41,10 +40,8 @@ c.executemany('''
     VALUES (?, ?, ?, ?, ?)
 ''', devices)
 
-# 提交事务
 conn.commit()
 
-# 插入传感器数据
 sensor_data = [
     ('MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC', 'Temperature', 22.5, datetime.now().isoformat()),
     ('MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC', 'Pressure', 101.3, datetime.now().isoformat()),
@@ -58,10 +55,7 @@ c.executemany('''
     VALUES (?, ?, ?, ?)
 ''', sensor_data)
 
-# 提交事务
 conn.commit()
-
-# 关闭连接
 conn.close()
 
 print("数据插入完成")
