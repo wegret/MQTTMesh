@@ -1,3 +1,4 @@
+#include "trietree.h"
 #include "mqtt_client.h"
 
 /**
@@ -77,16 +78,18 @@ int client_t::read(const uint8_t& ch){
                 return MQTT_ERROR;   
         }
         else{
+            uint8_t *buffer = msg_recv.buffer;
+            int buffer_len = msg_recv.buffer_len;
+
+            uint8_t *topic; // 主题
+            int topic_len;
+            uint8_t *payload;   // 有效载荷
+            int payload_len;
+
+
             if (msg_recv.control_type == CONNECT)   // 禁止再次发送CONNECT
                 return MQTT_ERROR;
             else if (msg_recv.control_type == PUBLISH){ // 发布消息
-                uint8_t *buffer = msg_recv.buffer;
-                int buffer_len = msg_recv.buffer_len;
-
-                uint8_t *topic; // 主题
-                int topic_len;
-                uint8_t *payload;   // 有效载荷
-                int payload_len;
                 
                 if (buffer_len < 2){
                     fprintf(stderr, "PUBLISH长度错误\n");
@@ -117,6 +120,36 @@ int client_t::read(const uint8_t& ch){
                 std::string topic_str(reinterpret_cast<char*>(topic), topic_len);
                 std::string message_str(reinterpret_cast<char*>(payload), payload_len);
                 fprintf(stderr, "客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
+                
+            }
+            else if (msg_recv.control_type == SUBSCRIBE){
+
+                msg_recv.id = (buffer[0] << 8) + buffer[1];
+
+                buffer_len -= 2;
+                buffer += 2;  
+
+                while (buffer_len >= 2){
+                    if (buffer_len < 2){
+                        fprintf(stderr, "PUBLISH长度错误\n");
+                        return MQTT_ERROR;
+                    }
+                    topic_len = (buffer[0] << 8) + buffer[1];
+                    topic = buffer + 2;
+
+                    std::string topic_str(reinterpret_cast<char*>(topic), topic_len);
+                    
+                    fprintf(stderr, "客户端 %s:%d 订阅主题 %s\n", ip, fd, topic_str.c_str());
+                    if (topic_tree.subscribe(this, (char *)topic, topic_len) == MQTT_ERROR){
+                        fprintf(stderr, "订阅主题 %s 失败\n", topic_str.c_str());
+                        return MQTT_ERROR;
+                    }
+                    fprintf(stderr, "订阅主题 %s 成功\n", topic_str.c_str());
+
+
+                    buffer += 2 + topic_len;
+                    buffer_len -= 2 + topic_len;
+                }
             }
             else
                 // TODO: 一些处理

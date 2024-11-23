@@ -19,4 +19,6 @@
 #include <sys/resource.h>
 #include <unordered_map>
 
+void client_remove(int fd);
+
 #endif // __MAIN_H__

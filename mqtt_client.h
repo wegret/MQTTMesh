@@ -7,7 +7,6 @@
 class client_t
 {
 private:
-    int fd;                   // 客户端文件描述符
     char ip[INET_ADDRSTRLEN]; // 客户端 IP 地址
 
     bool connect_init = false; // 是否初始化（是否已经建立连接）
@@ -21,6 +20,8 @@ private:
     char *clientid; // 客户端ID
 
 public:
+    int fd;                   // 客户端文件描述符
+    
     client_t(int fd, const char *ip);
 
     int read(const uint8_t &ch);
@@ -50,6 +51,13 @@ public:
             buffer = (uint8_t*)realloc(buffer, buffer_size);
         }
         buffer[buffer_len++] = ch;
+    }
+    void insert(const uint8_t* data, int len){
+        if (buffer_len + len > buffer_size){
+            buffer_size = (buffer_len + len) * 2 + 1;  // 2倍扩容
+            buffer = (uint8_t*)realloc(buffer, buffer_size);
+        }
+        memcpy(buffer + buffer_len, data, len);
     }
     int send(const int& fd){
         int bytes_send = ::send(fd, buffer, buffer_len, 0);

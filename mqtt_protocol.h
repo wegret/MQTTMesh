@@ -59,6 +59,19 @@ struct LengthDecoder
             return -1;
         return value;
     }
+    uint8_t* write(int x, int &len){
+        uint8_t* res = (uint8_t*)malloc(32);  // 长度应该不会太长吧？
+        int i = 0;
+        do{
+            uint8_t digit = x & 0x7F;
+            x /= 128;
+            if (x > 0)
+                digit |= 0x80;
+            res[i++] = digit;
+        } while (x > 0);
+        len = i;
+        return res;
+    }
     void clear(void)
     {
         multipler = 1;
