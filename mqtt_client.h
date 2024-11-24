@@ -33,17 +33,15 @@ public:
             free(username);
         if (password != nullptr)
             free(password);
+        fprintf(stderr, "客户端 %s 断开连接，正在清空订阅...\n", clientid);
         if (clientid != nullptr)
             free(clientid);
-        fprintf(stderr, "客户端 %s 断开连接，正在清空订阅...\n", clientid);
         int cnt=0;
         for (auto it = nodes.begin(); it != nodes.end(); it++){
             (*it)->erase(this);
             cnt++;
         }
         fprintf(stderr, "清空 %d 个订阅完成\n", cnt);
-        
-        free(clientid);
     }
 
     int read(const uint8_t &ch);
