@@ -58,6 +58,7 @@ public:
             buffer = (uint8_t*)realloc(buffer, buffer_size);
         }
         memcpy(buffer + buffer_len, data, len);
+        buffer_len += len;
     }
     int send(const int& fd){
         int bytes_send = ::send(fd, buffer, buffer_len, 0);

@@ -20,7 +20,10 @@ public:
     std::set<client_t*> clients; // 准确匹配的客户端，如果到这里结尾了就要发送消息
     std::set<client_t*> clients_wildcard; // # 通配符匹配的客户端，前缀能匹配到这里就要发送消息
 
-    TrieNode(const char *data, int len): pat(data), pat_len(len), children(), clients(), clients_wildcard(), arbitrary(nullptr){}
+    TrieNode(const char *data, int len): pat_len(len), clients(), clients_wildcard(), arbitrary(nullptr){
+        pat = (const char*)(malloc(len));
+        memcpy((void*)pat, data, len);
+    }
     ~TrieNode(){
         for (int i = 0; i < children.size(); i++)
             delete children[i];
@@ -92,7 +95,8 @@ public:
         return MQTT_OK;
     }
 
-    int publish(const char *topic, const int & topic_len, const char *message, const int message_len, int DUP = 0, int QoS = 0, int RETAIN = 0){
+    int publish(const char *topic, const int & topic_len, const char *message, const int message_len, client_t *publisher , int DUP = 0, int QoS = 0, int RETAIN = 0){
+        fprintf(stderr, "查找订阅者....\n");
         std::set<client_t*> subscribers; // 订阅者集合
         int last = 0;
 
@@ -125,14 +129,21 @@ public:
             subscribers.insert((*it)->clients.begin(), (*it)->clients.end());
 
             TrieNode *node = (*it)->getchild(topic + last, topic_len - last);
-            
-            subscribers.insert(node->clients.begin(), node->clients.end()); // 准确匹配
-            if (node != nullptr)
+
+            if (node != nullptr){
+                subscribers.insert(node->clients.begin(), node->clients.end()); // 准确匹配
                 subscribers.insert(node->clients_wildcard.begin(), node->clients_wildcard.end());   // # 通配符 + 匹配
+            }
+                
             // if ((*it)->arbitrary != nullptr)
             //     subscribers.insert((*it)->arbitrary->clients_wildcard.begin(), (*it)->arbitrary->clients_wildcard.end());
         }
 
+        fprintf(stderr, "找到 %d 个订阅者\n", (int)subscribers.size());
+        for (auto it = subscribers.begin(); it != subscribers.end(); it++)
+            fprintf(stderr, "\t订阅者 %d\n", (*it)->fd);
+
+        fprintf(stderr, "准备消息....\n");
         send_t send_buffer;
         send_buffer.insert(0x30 | (DUP << 3) | (QoS << 1) | RETAIN);
         // 剩余长度 = 2 + topic_len + message_len
@@ -140,18 +151,24 @@ public:
         int len;
         uint8_t *length = length_decoder.write(2 + topic_len + message_len, len);
         send_buffer.insert(length, len);
-        delete length;
+        free(length);
 
         send_buffer.insert(topic_len >> 8);
         send_buffer.insert(topic_len & 0xFF);
         send_buffer.insert((uint8_t*)topic, topic_len);
         send_buffer.insert((uint8_t*)message, message_len);
 
-        for (auto it = subscribers.begin(); it != subscribers.end(); it++)
-            if (send_buffer.send((*it)->fd) == MQTT_ERROR){ // 针对这个发送失败了
+        fprintf(stderr, "准备完成，发送消息....\n");
+
+        for (auto it = subscribers.begin(); it != subscribers.end(); it++){
+            fprintf(stderr, "发送消息给客户端 %d ...\n", (*it)->fd);
+            if ((*it) != publisher && send_buffer.send((*it)->fd) == MQTT_ERROR){ // 针对这个发送失败了
                 fprintf(stderr, "发送消息给客户端 %d 失败\n", (*it)->fd);
                 client_remove((*it)->fd);
             }
+            fprintf(stderr, "发送消息给客户端 %d 完成\n", (*it)->fd);
+        }
+        fprintf(stderr, "发送完成\n");
         return MQTT_OK;
     }
 };

@@ -26,6 +26,15 @@ int client_t::read(const uint8_t& ch){
         return MQTT_ERROR;
     // 一条消息结束了
     if (msg_recv.over){
+        fprintf(stderr, "来自 %s:%d 的消息结束\n", ip, fd);
+        fprintf(stderr, "消息内容：");
+        for (int i = 0; i < msg_recv.buffer_len; i++)
+            fprintf(stderr, "%02x ", msg_recv.buffer[i]);
+        fprintf(stderr, "\n");
+        fprintf(stderr, "ASCII：");
+        for (int i = 0; i < msg_recv.buffer_len; i++)
+            fprintf(stderr, "%c", msg_recv.buffer[i]);
+        fprintf(stderr, "\n");
         if (!connect_init){
             if (msg_recv.control_type != CONNECT)
                 return MQTT_ERROR;
@@ -75,7 +84,10 @@ int client_t::read(const uint8_t& ch){
             fprintf(stderr, "客户端 %s:%d 建立正确的MQTT Connection\n", ip, fd);
 
             if (send(CONNACK) == MQTT_ERROR)// 发送连接确认包
-                return MQTT_ERROR;   
+            {
+                fprintf(stderr, "发送连接确认包失败\n");
+                return MQTT_ERROR;
+            } 
         }
         else{
             uint8_t *buffer = msg_recv.buffer;
@@ -88,7 +100,10 @@ int client_t::read(const uint8_t& ch){
 
 
             if (msg_recv.control_type == CONNECT)   // 禁止再次发送CONNECT
+            {
+                fprintf(stderr, "客户端 %s:%d 发送了多个CONNECT\n", ip, fd);
                 return MQTT_ERROR;
+            }
             else if (msg_recv.control_type == PUBLISH){ // 发布消息
                 
                 if (buffer_len < 2){
@@ -121,6 +136,7 @@ int client_t::read(const uint8_t& ch){
                 std::string message_str(reinterpret_cast<char*>(payload), payload_len);
                 fprintf(stderr, "客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
                 
+                topic_tree.publish((char *)topic, topic_len, (char *)payload, payload_len, this);
             }
             else if (msg_recv.control_type == SUBSCRIBE){
 
