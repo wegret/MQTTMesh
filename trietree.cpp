@@ -5,8 +5,14 @@
 
 TopicTree topic_tree;
 
+/**
+ * 函数功能：把一个主题字符串加入TopicTree
+ * 传入参数：client_t *client, char *topic, int len
+ * 返回参数：是否成功
+ * 备注：    插入一个节点，或者返回已有的节点
+ */
 TrieNode *TrieNode::insert(const char *data, const int len)
-{ // 插入一个节点，或者返回已有的节点
+{ 
     for (int i = 0; i < children.size(); i++)
         if (children[i]->match(data, len))
             return children[i];
@@ -21,14 +27,25 @@ TrieNode *TrieNode::insert(const char *data, const int len)
     return node;
 }
 
+/**
+ * 函数功能：获取对应主题的子节点，如果没有则返回nullptr
+ * 传入参数：const char *data, const int len
+ * 返回参数：TrieNode *
+ * 备注：    获取除了单层符 + 以外的子节点
+ */
 TrieNode *TrieNode::getchild(const char *data, const int len)
-{ // 获取除了单层符 + 以外的子节点
+{ 
     for (int i = 0; i < children.size(); i++)
         if (children[i]->match(data, len))
             return children[i];
     return nullptr;
 }
 
+/**
+ * 函数功能：判断节点是否与对应的主题串匹配
+ * 传入参数：const char *data, int len
+ * 返回参数：是否匹配
+ */
 bool TrieNode::match(const char *data, int len)
 {
     // if (pat_len == 1 && pat[0] == '+')  // 单层符 + 和任何字符都视为匹配
@@ -40,6 +57,14 @@ bool TrieNode::match(const char *data, int len)
         return false;
     return memcmp(pat, data, len) == 0;
 }
+
+/**
+ * 函数功能：把一个客户端加入到节点的订阅者集合中
+ * 传入参数：client_t *client, bool istree
+ * 返回参数：无
+ * 备注：    istree为真表示是#通配符订阅
+ *          同时会添加到client_t的nodes中，方便删除
+ */
 void TrieNode::subscribe(client_t *client, bool istree)
 {
     if (istree){
@@ -82,6 +107,13 @@ int TopicTree::subscribe(client_t *client, char *topic, int len)
     return MQTT_OK;
 }
 
+
+/**
+ * 函数功能：分发主题消息
+ * 传入参数：const char *topic, const int &topic_len, const char *message, const int message_len, client_t *publisher, int DUP, int QoS, int RETAIN
+ * 返回参数：是否成功
+ * 备注：    会把消息发送给所有订阅了这个主题的客户端
+ */
 int TopicTree::publish(const char *topic, const int &topic_len, const char *message, const int message_len, client_t *publisher, int DUP, int QoS, int RETAIN)
 {
     fprintf(stderr, "查找订阅者....\n");
