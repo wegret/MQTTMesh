@@ -131,7 +131,7 @@ int client_t::read(const uint8_t& ch){
                     payload = buffer + 2 + topic_len;
                     payload_len = buffer_len - 2 - topic_len;
                 }
-                // TODO: 要把消息发送给所有订阅了这个主题的客户端
+                
                 std::string topic_str(reinterpret_cast<char*>(topic), topic_len);
                 std::string message_str(reinterpret_cast<char*>(payload), payload_len);
                 fprintf(stderr, "客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
