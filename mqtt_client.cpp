@@ -24,15 +24,15 @@ int client_t::read(const uint8_t& ch){
         return MQTT_ERROR;
     // 一条消息结束了
     if (msg_recv.over){
-        fprintf(stderr, "来自 %s:%d 的消息结束\n", ip, fd);
-        fprintf(stderr, "消息内容：");
+        fprintf(stderr, "\n来自 %s:%d 的消息！\n", ip, fd);
+        fprintf(stderr, "\t消息内容：");
         for (int i = 0; i < msg_recv.buffer_len; i++)
             fprintf(stderr, "%02x ", msg_recv.buffer[i]);
         fprintf(stderr, "\n");
-        fprintf(stderr, "ASCII：");
+        fprintf(stderr, "\tASCII：");
         for (int i = 0; i < msg_recv.buffer_len; i++)
             fprintf(stderr, "%c", msg_recv.buffer[i]);
-        fprintf(stderr, "\n");
+        fprintf(stderr, "\n\n");
         if (!connect_init){
             if (msg_recv.control_type != CONNECT)
                 return MQTT_ERROR;
@@ -77,9 +77,11 @@ int client_t::read(const uint8_t& ch){
                     // TODO: 这里应该发一个0x02的CONNACK
                     return MQTT_ERROR;
                 }
-                clientid = (char*)(payload + 2);
+                clientid = (char*)malloc(client_id_len + 1);
+                memcpy(clientid, payload + 2, client_id_len);
+                clientid[client_id_len] = '\0';
             }
-            fprintf(stderr, "客户端 %s:%d 建立正确的MQTT Connection\n", ip, fd);
+            fprintf(stderr, "【连接】客户端 %s:%d 建立正确的MQTT Connection\n", ip, fd);
 
             if (send(CONNACK) == MQTT_ERROR)// 发送连接确认包
             {
@@ -132,7 +134,7 @@ int client_t::read(const uint8_t& ch){
                 
                 std::string topic_str(reinterpret_cast<char*>(topic), topic_len);
                 std::string message_str(reinterpret_cast<char*>(payload), payload_len);
-                fprintf(stderr, "客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
+                fprintf(stderr, "【消息】客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
                 
                 topic_tree.publish((char *)topic, topic_len, (char *)payload, payload_len, this);
             }
@@ -145,6 +147,8 @@ int client_t::read(const uint8_t& ch){
 
                 int topic_cnt = 0;
 
+
+                fprintf(stderr, "【订阅】客户端 %s 要求订阅： ", this->clientid);
                 while (buffer_len >= 2){
                     if (buffer_len < 2){
                         fprintf(stderr, "PUBLISH长度错误\n");
@@ -155,17 +159,19 @@ int client_t::read(const uint8_t& ch){
 
                     std::string topic_str(reinterpret_cast<char*>(topic), topic_len);
                     
-                    fprintf(stderr, "客户端 %s:%d 订阅主题 %s\n", ip, fd, topic_str.c_str());
+                    fprintf(stderr, " [%s] ", topic_str.c_str());
                     if (topic_tree.subscribe(this, (char *)topic, topic_len) == MQTT_ERROR){
                         fprintf(stderr, "订阅主题 %s 失败\n", topic_str.c_str());
                         return MQTT_ERROR;
                     }
-                    fprintf(stderr, "订阅主题 %s 成功\n", topic_str.c_str());
+                    // fprintf(stderr, "订阅主题 %s 成功\n", topic_str.c_str());
                     
                     topic_cnt++;
                     buffer += 2 + topic_len;
                     buffer_len -= 2 + topic_len;
                 }
+
+                fprintf(stderr, " 共 %d 个主题\n", topic_cnt);
 
                 // TODO: 发送SUBACK报文
                 send_t send_buffer;

@@ -21,9 +21,8 @@ private:
     char *username = nullptr; // 用户名
     char *password = nullptr; // 密码（暂时没打算实现）
 
-    char *clientid; // 客户端ID
-
 public:
+    char *clientid; // 客户端ID
     int fd;                   // 客户端文件描述符
     std::vector<std::set<client_t*>*> nodes;
     
@@ -36,13 +35,15 @@ public:
             free(password);
         if (clientid != nullptr)
             free(clientid);
-        fprintf(stderr, "客户端 %s 断开连接，正在清空订阅...\n", ip);
+        fprintf(stderr, "客户端 %s 断开连接，正在清空订阅...\n", clientid);
         int cnt=0;
         for (auto it = nodes.begin(); it != nodes.end(); it++){
             (*it)->erase(this);
             cnt++;
         }
         fprintf(stderr, "清空 %d 个订阅完成\n", cnt);
+        
+        free(clientid);
     }
 
     int read(const uint8_t &ch);
@@ -62,6 +63,11 @@ public:
         buffer_size = 64;
         buffer = (uint8_t*)malloc(buffer_size);
         buffer_len = 0;
+    }
+    ~send_t(){
+        if (buffer != nullptr)
+            free(buffer);
+        buffer = nullptr;
     }
     void clear(){
         buffer_len = 0;

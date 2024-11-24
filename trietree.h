@@ -28,6 +28,7 @@ public:
     ~TrieNode(){
         for (int i = 0; i < children.size(); i++)
             delete children[i];
+        free((void*)pat);
     }
     TrieNode *insert(const char *data, const int len);
 

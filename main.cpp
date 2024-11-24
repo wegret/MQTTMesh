@@ -36,6 +36,7 @@ void client_insert(int fd, const char* ip){
 }
 
 void client_remove(int fd){
+    fprintf(stderr, "【断开】客户机 %s 断开连接\n", fd_client_ptr[fd]->clientid);
     close(fd);
     if (fd_client_ptr[fd] != nullptr)
         delete fd_client_ptr[fd];
@@ -240,7 +241,7 @@ int main(int argc, char *argv[])
                     {
                         // 处理接收到的数据
                         buffer[count] = '\0'; // 确保字符串终止
-                        printf("收到来自 fd=%d 的数据: %s\n", client_fd, buffer);
+                        // printf("收到来自 fd=%d 的数据: %s\n", client_fd, buffer);
 
                         for (int i = 0; i < count; i++){
                             if (fd_client_ptr[client_fd]->read(buffer[i]) == MQTT_ERROR){

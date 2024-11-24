@@ -102,6 +102,7 @@ struct Message_t
     {
         if (buffer != nullptr)
             free(buffer);
+        buffer = nullptr;
     }
 
     int read(const uint8_t &ch);

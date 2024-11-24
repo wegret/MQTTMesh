@@ -116,7 +116,7 @@ int TopicTree::subscribe(client_t *client, char *topic, int len)
  */
 int TopicTree::publish(const char *topic, const int &topic_len, const char *message, const int message_len, client_t *publisher, int DUP, int QoS, int RETAIN)
 {
-    fprintf(stderr, "查找订阅者....\n");
+    // fprintf(stderr, "查找订阅者....\n");
     std::set<client_t *> subscribers; // 订阅者集合
     int last = 0;
 
@@ -168,7 +168,7 @@ int TopicTree::publish(const char *topic, const int &topic_len, const char *mess
     for (auto it = subscribers.begin(); it != subscribers.end(); it++)
         fprintf(stderr, "\t订阅者 %d\n", (*it)->fd);
 
-    fprintf(stderr, "准备消息....\n");
+    // fprintf(stderr, "准备消息....\n");
     send_t send_buffer;
     send_buffer.insert(0x30 | (DUP << 3) | (QoS << 1) | RETAIN);
     // 剩余长度 = 2 + topic_len + message_len
@@ -183,17 +183,17 @@ int TopicTree::publish(const char *topic, const int &topic_len, const char *mess
     send_buffer.insert((uint8_t *)topic, topic_len);
     send_buffer.insert((uint8_t *)message, message_len);
 
-    fprintf(stderr, "准备完成，发送消息....\n");
+    // fprintf(stderr, "准备完成，发送消息....\n");
 
     for (auto it = subscribers.begin(); it != subscribers.end(); it++)
     {
-        fprintf(stderr, "发送消息给客户端 %d ...\n", (*it)->fd);
+        // fprintf(stderr, "发送消息给客户端 %d ...\n", (*it)->fd);
         if ((*it) != publisher && send_buffer.send((*it)->fd) == MQTT_ERROR)
         { // 针对这个发送失败了
-            fprintf(stderr, "发送消息给客户端 %d 失败\n", (*it)->fd);
+            // fprintf(stderr, "发送消息给客户端 %d 失败\n", (*it)->fd);
             client_remove((*it)->fd);
         }
-        fprintf(stderr, "发送消息给客户端 %d 完成\n", (*it)->fd);
+        // fprintf(stderr, "发送消息给客户端 %d 完成\n", (*it)->fd);
     }
     fprintf(stderr, "发送完成\n");
     return MQTT_OK;
