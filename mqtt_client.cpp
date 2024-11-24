@@ -11,8 +11,6 @@ client_t::client_t(int fd, const char *ip)
     this->fd = fd;
     strncpy(this->ip, ip, INET_ADDRSTRLEN);
     this->connect_init = false;
-
-    
 }
 
 /**
@@ -145,6 +143,8 @@ int client_t::read(const uint8_t& ch){
                 buffer_len -= 2;
                 buffer += 2;  
 
+                int topic_cnt = 0;
+
                 while (buffer_len >= 2){
                     if (buffer_len < 2){
                         fprintf(stderr, "PUBLISH长度错误\n");
@@ -161,11 +161,32 @@ int client_t::read(const uint8_t& ch){
                         return MQTT_ERROR;
                     }
                     fprintf(stderr, "订阅主题 %s 成功\n", topic_str.c_str());
-
-
+                    
+                    topic_cnt++;
                     buffer += 2 + topic_len;
                     buffer_len -= 2 + topic_len;
                 }
+
+                // TODO: 发送SUBACK报文
+                send_t send_buffer;
+                send_buffer.insert(0x90);    // 固定头部
+                // 剩余长度 = 2 + 主题数
+                LengthDecoder length_decoder;
+                int len;
+                uint8_t *length = length_decoder.write(2 + topic_cnt, len);
+                send_buffer.insert(length, len);
+                free(length);
+
+                send_buffer.insert(msg_recv.id >> 8);
+                send_buffer.insert(msg_recv.id & 0xff);
+
+                for (int i = 0; i < topic_cnt; i++)
+                    send_buffer.insert(0);  // QoS 0
+                if (send_buffer.send(fd) == MQTT_ERROR){
+                    fprintf(stderr, "发送SUBACK失败\n");
+                    return MQTT_ERROR;
+                }
+                
             }
             else
                 // TODO: 一些处理

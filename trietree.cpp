@@ -42,10 +42,14 @@ bool TrieNode::match(const char *data, int len)
 }
 void TrieNode::subscribe(client_t *client, bool istree)
 {
-    if (istree)
+    if (istree){
         clients_wildcard.insert(client);
-    else
+        client->nodes.push_back(&clients_wildcard);
+    }
+    else{
         clients.insert(client);
+        client->nodes.push_back(&clients);
+    }
 }
 
 /**

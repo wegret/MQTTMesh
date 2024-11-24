@@ -23,10 +23,9 @@ private:
 
     char *clientid; // 客户端ID
 
-    std::vector<TrieNode*> nodes;
-
 public:
     int fd;                   // 客户端文件描述符
+    std::vector<std::set<client_t*>*> nodes;
     
     client_t(int fd, const char *ip);
 
@@ -37,18 +36,13 @@ public:
             free(password);
         if (clientid != nullptr)
             free(clientid);
+        fprintf(stderr, "客户端 %s 断开连接，正在清空订阅...\n", ip);
+        int cnt=0;
         for (auto it = nodes.begin(); it != nodes.end(); it++){
-            for (auto cptr = (*it)->clients.begin(); cptr != (*it)->clients.end(); cptr++)
-                if (*cptr == this){
-                    (*it)->clients.erase(cptr);
-                    break;
-                }
-            for (auto cptr = (*it)->clients_wildcard.begin(); cptr != (*it)->clients_wildcard.end(); cptr++)
-                if (*cptr == this){
-                    (*it)->clients_wildcard.erase(cptr);
-                    break;
-                }
+            (*it)->erase(this);
+            cnt++;
         }
+        fprintf(stderr, "清空 %d 个订阅完成\n", cnt);
     }
 
     int read(const uint8_t &ch);

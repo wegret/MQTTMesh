@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
             {
                 // 出现错误，关闭连接
                 fprintf(stderr, "epoll 事件错误，关闭 fd %d\n", events[i].data.fd);
-                close(events[i].data.fd);
+                client_remove(events[i].data.fd);
                 continue;
             }
             else if (events[i].data.fd == server_sock)
