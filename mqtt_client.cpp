@@ -194,6 +194,11 @@ int client_t::read(const uint8_t& ch){
                 }
                 
             }
+            /* 心跳请求 */
+            else if (msg_recv.control_type == PINGREQ){
+                fprintf(stderr, "【心跳】客户端 %s:%d 发送心跳请求\n", ip, fd);
+                send(PINGRESP); // 发送心跳响应
+            }
             else
                 // TODO: 一些处理
                 ;
@@ -225,6 +230,11 @@ int client_t::send(ControlType control_type, const uint8_t *buffer, int buffer_l
             send_buffer.insert(buffer[0]);       // 连接确认标志
             send_buffer.insert(buffer[1]);       // 返回码
         }
+    }
+    /* 心跳响应 */
+    else if (control_type == PINGRESP){
+        send_buffer.insert(0xD0);    // 固定头部
+        send_buffer.insert(0);       // 剩余长度
     }
     else
         return MQTT_ERROR;
