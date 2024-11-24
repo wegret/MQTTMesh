@@ -2,7 +2,11 @@
 #define __MQTT_CLIENT_H__
 
 #include "main.h"
+#include <vector>
 #include "mqtt_protocol.h"
+#include "trietree.h"
+
+class TrieNode;
 
 class client_t
 {
@@ -19,10 +23,33 @@ private:
 
     char *clientid; // 客户端ID
 
+    std::vector<TrieNode*> nodes;
+
 public:
     int fd;                   // 客户端文件描述符
     
     client_t(int fd, const char *ip);
+
+    ~client_t(){
+        if (username != nullptr)
+            free(username);
+        if (password != nullptr)
+            free(password);
+        if (clientid != nullptr)
+            free(clientid);
+        for (auto it = nodes.begin(); it != nodes.end(); it++){
+            for (auto cptr = (*it)->clients.begin(); cptr != (*it)->clients.end(); cptr++)
+                if (*cptr == this){
+                    (*it)->clients.erase(cptr);
+                    break;
+                }
+            for (auto cptr = (*it)->clients_wildcard.begin(); cptr != (*it)->clients_wildcard.end(); cptr++)
+                if (*cptr == this){
+                    (*it)->clients_wildcard.erase(cptr);
+                    break;
+                }
+        }
+    }
 
     int read(const uint8_t &ch);
 

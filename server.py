@@ -3,9 +3,9 @@ import sqlite3
 import os
 import yaml
 
-with open("config.yaml", 'r', encoding='utf-8') as file:
-    config = yaml.safe_load(file)
-port = config['HTTP']['port']
+# with open("config.yaml", 'r', encoding='utf-8') as file:
+#     config = yaml.safe_load(file)
+port = 8889
 
 db_path = "database/mqtt_db"
 

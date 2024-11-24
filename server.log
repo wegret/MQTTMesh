@@ -8,208 +8,38 @@ WARNING: This is a development server. Do not use it in a production deployment.
 Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 792-498-416
-36.248.233.49 - - [19/Nov/2024 00:36:25] "GET /devices HTTP/1.1" 200 -
-36.248.233.49 - - [19/Nov/2024 00:36:26] "GET /favicon.ico HTTP/1.1" 404 -
-180.101.245.246 - - [19/Nov/2024 00:37:44] "GET /devices HTTP/1.1" 200 -
-180.101.244.12 - - [19/Nov/2024 00:37:50] "GET / HTTP/1.1" 404 -
-220.196.160.96 - - [19/Nov/2024 00:37:58] "GET / HTTP/1.1" 404 -
-123.160.221.138 - - [19/Nov/2024 05:15:19] code 400, message Bad request version ('À\x13À')
-123.160.221.138 - - [19/Nov/2024 05:15:19] "\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03I\x06²ù¼\x99iÀYûøºe-\x83Ud]\x0e\x8d·b8´gÆÝ9dZ8f gÁ\x81i³öòË°©\x19NÖ½\x95g|püé<Z¡\x90T·é¥8'O;\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À" HTTPStatus.BAD_REQUEST -
-123.160.221.138 - - [19/Nov/2024 05:15:30] "GET / HTTP/1.1" 404 -
-111.7.96.158 - - [19/Nov/2024 05:15:37] "GET / HTTP/1.1" 404 -
-220.196.160.61 - - [19/Nov/2024 05:22:07] "GET / HTTP/1.1" 404 -
-147.45.112.158 - - [19/Nov/2024 07:59:38] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-147.45.112.158 - - [19/Nov/2024 07:59:38] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-159.89.137.108 - - [19/Nov/2024 08:56:21] code 400, message Bad request syntax ('SSH-2.0-OpenSSH')
-159.89.137.108 - - [19/Nov/2024 08:56:21] "SSH-2.0-OpenSSH" HTTPStatus.BAD_REQUEST -
-35.203.211.168 - - [19/Nov/2024 11:22:35] "GET / HTTP/1.1" 404 -
-79.124.49.58 - - [19/Nov/2024 11:52:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.58 - - [19/Nov/2024 11:52:43] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-60.191.20.210 - - [19/Nov/2024 11:53:08] "GET / HTTP/1.1" 404 -
-139.224.190.87 - - [19/Nov/2024 19:53:42] "HEAD /start/index.html HTTP/1.1" 404 -
-139.224.190.87 - - [19/Nov/2024 19:53:42] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x03\x00\x9c\x01\x00\x00\x98\x03\x03g<|FéõêqVO<=YZÅ\x16ßG*\x96C')
-139.224.190.87 - - [19/Nov/2024 19:53:42] "\x16\x03\x03\x00\x9c\x01\x00\x00\x98\x03\x03g<|FéõêqVO<=YZÅ\x16ßG*\x96C\x85\x99Û­*¾\x0fsÊèã\x00\x008À,À+À0À/\x00\x9f\x00\x9eÀ$À#À(À'À" HTTPStatus.BAD_REQUEST -
-139.224.190.87 - - [19/Nov/2024 19:53:42] code 400, message Bad request syntax ('\x16\x03\x03\x00\x9c\x01\x00\x00\x98\x03\x03g<|F\x06Ç<¬')
-139.224.190.87 - - [19/Nov/2024 19:53:42] "\x16\x03\x03\x00\x9c\x01\x00\x00\x98\x03\x03g<|F\x06Ç<¬" HTTPStatus.BAD_REQUEST -
-139.224.190.87 - - [19/Nov/2024 19:53:42] "HEAD /pscc/ HTTP/1.1" 404 -
-172.206.147.162 - - [19/Nov/2024 20:31:11] code 400, message Bad request syntax ('MGLNDD_139.199.175.55_8889')
-172.206.147.162 - - [19/Nov/2024 20:31:11] "MGLNDD_139.199.175.55_8889" HTTPStatus.BAD_REQUEST -
-147.185.133.206 - - [19/Nov/2024 23:25:11] "GET / HTTP/1.1" 404 -
-39.105.14.55 - - [20/Nov/2024 00:12:56] code 400, message Bad request version ('À\x14À')
-39.105.14.55 - - [20/Nov/2024 00:12:56] "\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03ëTC\x0c0lq\x12\x8füE©Ü7>­\x85<\x96¨\x1ed\x19ªÃCo4\x08\x98\x93Ñ fK\x0f§\x17\x1d6Y¨Â\x11Wðºøeì:f¬Pæ¡>å!ÓÞ\x8a»Å{\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À" HTTPStatus.BAD_REQUEST -
-39.105.14.55 - - [20/Nov/2024 00:28:16] "GET / HTTP/1.1" 404 -
-39.105.14.55 - - [20/Nov/2024 00:28:36] "GET /favicon.ico HTTP/1.1" 404 -
-79.124.49.146 - - [20/Nov/2024 01:05:44] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.146 - - [20/Nov/2024 01:05:44] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-45.140.17.52 - - [20/Nov/2024 01:06:38] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-45.140.17.52 - - [20/Nov/2024 01:06:38] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-92.255.57.150 - - [20/Nov/2024 03:52:55] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-92.255.57.150 - - [20/Nov/2024 03:52:55] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-45.140.17.52 - - [20/Nov/2024 04:15:29] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-45.140.17.52 - - [20/Nov/2024 04:15:29] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-101.251.238.172 - - [20/Nov/2024 06:11:21] code 400, message Bad request version ("\x18T~É\x05Ðt\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
-101.251.238.172 - - [20/Nov/2024 06:11:21] "\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03NGï\x13Ã&eãAð_ú\x00\x14TR£\x9cJÍ\x14\x80êr:£'i\x82aûù ã5\x9f6Ju= øÎ \x13Ûøu\\¬\x070¿Ô±eÒ\x85\x18T~É\x05Ðt\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ" HTTPStatus.BAD_REQUEST -
-101.251.238.172 - - [20/Nov/2024 06:11:21] "GET / HTTP/1.1" 404 -
-92.255.57.150 - - [20/Nov/2024 07:07:27] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-92.255.57.150 - - [20/Nov/2024 07:07:27] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-45.140.17.52 - - [20/Nov/2024 07:33:45] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-45.140.17.52 - - [20/Nov/2024 07:33:45] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-162.216.150.240 - - [20/Nov/2024 12:21:52] "GET / HTTP/1.1" 404 -
-59.83.208.103 - - [20/Nov/2024 12:32:26] "GET / HTTP/1.1" 404 -
-220.196.160.75 - - [20/Nov/2024 12:32:26] "GET / HTTP/1.1" 404 -
-59.83.208.106 - - [20/Nov/2024 12:32:26] "GET / HTTP/1.1" 404 -
-135.148.213.242 - - [20/Nov/2024 15:04:48] "GET / HTTP/1.1" 404 -
-51.81.110.58 - - [20/Nov/2024 15:11:10] "GET /favicon.ico HTTP/1.1" 404 -
-185.226.196.8 - - [21/Nov/2024 06:49:52] "GET / HTTP/1.1" 404 -
-220.196.160.144 - - [21/Nov/2024 06:52:15] "GET / HTTP/1.1" 404 -
-180.101.245.250 - - [21/Nov/2024 06:52:15] "GET / HTTP/1.1" 404 -
-180.163.28.55 - - [21/Nov/2024 07:54:44] "GET / HTTP/1.1" 404 -
-4.246.247.191 - - [21/Nov/2024 08:41:46] code 400, message Bad request syntax ('MGLNDD_139.199.175.55_8889')
-4.246.247.191 - - [21/Nov/2024 08:41:46] "MGLNDD_139.199.175.55_8889" HTTPStatus.BAD_REQUEST -
-147.185.133.14 - - [21/Nov/2024 12:35:50] "GET / HTTP/1.1" 404 -
-87.236.176.15 - - [21/Nov/2024 12:53:06] "GET / HTTP/1.1" 404 -
-220.196.160.144 - - [21/Nov/2024 13:54:15] "GET / HTTP/1.1" 404 -
-79.124.49.146 - - [21/Nov/2024 14:31:31] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.146 - - [21/Nov/2024 14:31:31] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-147.45.112.8 - - [21/Nov/2024 15:53:01] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-147.45.112.8 - - [21/Nov/2024 15:53:01] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-162.216.150.107 - - [21/Nov/2024 20:45:02] "GET / HTTP/1.1" 404 -
-35.203.211.123 - - [21/Nov/2024 22:59:33] "GET / HTTP/1.1" 404 -
-180.101.245.251 - - [21/Nov/2024 23:02:28] "GET / HTTP/1.1" 404 -
-79.124.49.146 - - [21/Nov/2024 23:09:47] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.146 - - [21/Nov/2024 23:09:47] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-206.189.76.6 - - [22/Nov/2024 02:43:00] code 400, message Bad request syntax ('JRMI\x00\x02K')
-206.189.76.6 - - [22/Nov/2024 02:43:00] "JRMI\x00\x02K" HTTPStatus.BAD_REQUEST -
-206.189.76.6 - - [22/Nov/2024 02:43:01] "GET / HTTP/1.0" 404 -
-79.124.49.58 - - [22/Nov/2024 11:10:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.58 - - [22/Nov/2024 11:10:41] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-162.216.149.234 - - [22/Nov/2024 11:29:55] "GET / HTTP/1.1" 404 -
-180.101.245.253 - - [22/Nov/2024 11:32:31] "GET / HTTP/1.1" 404 -
-220.196.160.95 - - [22/Nov/2024 11:32:31] "GET / HTTP/1.1" 404 -
-220.196.160.144 - - [22/Nov/2024 11:32:33] "GET / HTTP/1.1" 404 -
-79.124.49.146 - - [22/Nov/2024 13:22:05] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.146 - - [22/Nov/2024 13:22:05] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-59.77.43.21 - - [22/Nov/2024 16:40:15] code 400, message Bad request version ('**\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Szz\x00\x00\x003\x04ï\x04íêê\x00\x01\x00\x11ì\x04ÀGìY´á\x14ºB')
-59.77.43.21 - - [22/Nov/2024 16:40:15] "\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03Æ\x95\x82/\x97¦X\x8e[0\x019(\x96>¯á¥°ë±íö\x09\x85Ha\x07Dò\x12\x1e \x82?^ö\x13{ño\x04\x91hø\x92L_J\x91¯Bîº2ÛýÏ\x1f¹Í4\x1f§£\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Szz\x00\x00\x003\x04ï\x04íêê\x00\x01\x00\x11ì\x04ÀGìY´á\x14ºB" HTTPStatus.BAD_REQUEST -
-59.77.43.21 - - [22/Nov/2024 16:40:15] code 400, message Bad request version ('r')
-59.77.43.21 - - [22/Nov/2024 16:40:15] "\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03&«Ïò´fËËß¡ZN\x90\x03Bä\x1c\x0b\x0c\x09\x9bÿtÃô\x10 =ôx6R \x83õ¹þO\x16Ö«\x96×vA&\x90\x85\x08n\x8eªä|éÂ"zÝ\x8c\x82\x17¼Ä)\x00 êê\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ºº\x00\x00ÿ\x01\x00\x01\x00þ\x0d\x01\x1a\x00\x00\x01\x00\x01È\x00 ¶\x98ÑÌ\x176QY\x81\x13¿á³\x1c®<K#üÍ\x8bD\x80ª~¥rS½Çö|\x00ð¼¨\x19\x99\x03Í¼ \x0b5\x87\x13¸\x82\x87\x97Ìk+ÝÌ\x93\x82ôd\x96î¨§è:M\x02j,ý¼\x9c\x82Ï\x10<&ú\x0c²g¦\x16À´\x12éêÍüÝ%\x94Äº\x16?°\x15\x83ö°µ.MKH);\x09äþ\x98\x07nZÌÆ|ËµaÀ\x05­\x94hÐ­©\x81¸\x1e\x7fûíE\x01\x14©\x01\x98iØ¯`\x98ErÃÌXÏ8ß~yd«\x82½ÒMø`ÑL\x9fyõ©\x13|#X\x96#ÆgY\x1eXþ¢\x96\x8d\x95\x8a^üÅ\x16È\x1d\x1eIT5\x0f\x97ÂÒÞ2cÀ\x1eÎÕtÖÃ\x13\x93ÝhCVéÝ=Üt¸ ú\x89;ç\x8c5u\x1cðæ\x18jÒ\\\x90\x9cÉ$Æ;±Ø"\x02_åPà-¤&ìòäS:·`ô\x84 ²ZwFy1â\x13\x003\x04ï\x04íêê\x00\x01\x00\x11ì\x04À\x94zZGZº\x1d'\x9a\x7fÊ\x07j\x96´\x1f©\x9c&\x15XÒ\x03·ù lo\x95RM\x00\x86ñàË,£<Gi5­E\x95\x9f:qý\x15I[x\x9e¢,º{\x94\x0fÅ\x81\x8d\x9c4\x91¥RESôbMQ\x0f< \x87a`Bró\x87\x83t»\x02·\x84r3CÃ\x06²äÖ\x89b÷D­¤\x11ù\x95¤.á½È&>Îæ}k\x13²\x85Å&°²b]ùD7f9­úÇÜtÂ|Ú8Ë\x08\x9dXe\x89¢gÀ úÊðÛ(bë4ÌÊ\x85r" HTTPStatus.BAD_REQUEST -
-59.77.43.21 - - [22/Nov/2024 16:40:16] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 16:40:16] "GET /favicon.ico HTTP/1.1" 404 -
-59.77.43.21 - - [22/Nov/2024 16:41:12] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 16:41:12] code 400, message Bad request version ('\x02h2\x08http/1.1ÿ\x01\x00\x01\x00\x00\x1b\x00\x03\x02\x00\x02\x00+\x00\x07\x06zz\x03\x04\x03\x03\x00')
-59.77.43.21 - - [22/Nov/2024 16:41:12] "\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03ÚäV·\x9a\x83Ø®Í\x96âä%\x9d\x10!âkN\x0f\x14\x80\x93\x11D\x80\x80Â÷\x90\x1cn Ë\x06·3$K^\x14\x03Øè\x00\x8e©hÚs0\x18öâ\x10+Lf#\x0eÈíD\x19Ý\x00 ::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063zz\x00\x00\x00\x12\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1ÿ\x01\x00\x01\x00\x00\x1b\x00\x03\x02\x00\x02\x00+\x00\x07\x06zz\x03\x04\x03\x03\x00" HTTPStatus.BAD_REQUEST -
-59.77.43.21 - - [22/Nov/2024 16:41:12] code 400, message Bad request syntax ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03')
-59.77.43.21 - - [22/Nov/2024 16:41:12] "\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03" HTTPStatus.BAD_REQUEST -
-180.101.245.247 - - [22/Nov/2024 16:43:01] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-13.58.97.162 - - [22/Nov/2024 16:44:37] code 400, message Bad request version ('¹<à')
-13.58.97.162 - - [22/Nov/2024 16:44:37] "\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x11Å¾;/Á*\x1ez\x0d\x81ºÊk#Ì\x86Ý\x10 ¹<à" HTTPStatus.BAD_REQUEST -
-180.101.245.248 - - [22/Nov/2024 16:46:51] "GET /devices HTTP/1.1" 200 -
-13.58.97.162 - - [22/Nov/2024 16:48:24] "GET / HTTP/1.1" 404 -
-59.77.43.21 - - [22/Nov/2024 17:11:44] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:16:57] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:24:21] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:24:42] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:25:08] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:36:49] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:36:50] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:36:50] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:37:36] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:37:36] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:39:04] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:39:10] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:39:10] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:39:30] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:39:36] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:39:36] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:40:22] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:40:22] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:40:30] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:40:30] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:40:30] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-220.196.160.125 - - [22/Nov/2024 17:43:00] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-89.248.163.50 - - [22/Nov/2024 17:44:16] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00')
-89.248.163.50 - - [22/Nov/2024 17:44:16] "\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00" HTTPStatus.BAD_REQUEST -
-59.77.43.21 - - [22/Nov/2024 17:45:06] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:45:21] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:48:28] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:48:37] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:48:50] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:49:38] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:49:44] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:50:05] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:50:32] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:50:36] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:52:30] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:52:30] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:52:30] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:52:40] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:52:40] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:52:41] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:53:25] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:53:25] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:53:25] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:53:29] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:53:30] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 17:53:30] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:05:09] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:05:09] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:05:10] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:09:34] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:09:34] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:09:34] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:10:34] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:10:35] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:10:35] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:10:59] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:10:59] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:10:59] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:11:38] "GET /devices HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:11:39] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-59.77.43.21 - - [22/Nov/2024 18:11:39] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
-172.206.147.242 - - [22/Nov/2024 21:09:33] code 400, message Bad request syntax ('MGLNDD_139.199.175.55_8889')
-172.206.147.242 - - [22/Nov/2024 21:09:33] "MGLNDD_139.199.175.55_8889" HTTPStatus.BAD_REQUEST -
-35.203.211.142 - - [22/Nov/2024 23:21:35] "GET / HTTP/1.1" 404 -
-180.101.245.253 - - [22/Nov/2024 23:32:31] "GET / HTTP/1.1" 404 -
-69.234.213.116 - - [23/Nov/2024 00:41:52] "GET /ui/login.html HTTP/1.1" 404 -
-61.183.41.239 - - [23/Nov/2024 03:20:38] "GET / HTTP/1.1" 404 -
-88.214.25.65 - - [23/Nov/2024 08:14:51] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-88.214.25.65 - - [23/Nov/2024 08:14:51] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-13.83.40.178 - - [23/Nov/2024 10:15:29] "GET / HTTP/1.1" 404 -
-35.203.211.244 - - [23/Nov/2024 11:18:39] "GET / HTTP/1.1" 404 -
-79.124.49.58 - - [23/Nov/2024 11:57:48] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.58 - - [23/Nov/2024 11:57:48] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-36.156.22.4 - - [23/Nov/2024 14:25:15] "GET / HTTP/1.0" 404 -
-36.156.22.4 - - [23/Nov/2024 14:25:16] "GET /favicon.ico HTTP/1.1" 404 -
-36.156.22.4 - - [23/Nov/2024 14:25:16] "GET /robots.txt HTTP/1.1" 404 -
-36.156.22.4 - - [23/Nov/2024 14:25:16] "GET /.well-known/security.txt HTTP/1.1" 404 -
-101.251.238.170 - - [23/Nov/2024 15:12:19] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03òëÄ\x80|ÿ:êÄÍ,ÄÿO×$')
-101.251.238.170 - - [23/Nov/2024 15:12:19] "\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03òëÄ\x80|ÿ:êÄÍ,ÄÿO×$ \x8aÊè\x8b\x8cR\x88\x14XV\x83" HTTPStatus.BAD_REQUEST -
-101.251.238.170 - - [23/Nov/2024 15:12:45] "GET / HTTP/1.1" 404 -
-185.147.124.104 - - [23/Nov/2024 18:53:14] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-185.147.124.104 - - [23/Nov/2024 18:53:14] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-162.216.149.215 - - [23/Nov/2024 23:14:54] "GET / HTTP/1.1" 404 -
-79.124.49.146 - - [23/Nov/2024 23:17:22] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-79.124.49.146 - - [23/Nov/2024 23:17:22] "\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
-220.196.160.117 - - [23/Nov/2024 23:22:28] "GET / HTTP/1.1" 404 -
-220.196.160.95 - - [23/Nov/2024 23:22:28] "GET / HTTP/1.1" 404 -
-220.196.160.95 - - [23/Nov/2024 23:22:30] "GET / HTTP/1.1" 404 -
-180.163.29.103 - - [24/Nov/2024 00:42:47] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
-148.153.56.86 - - [24/Nov/2024 02:15:04] "GET /j7hS HTTP/1.1" 404 -
-148.153.56.86 - - [24/Nov/2024 02:15:04] "GET /TuNF HTTP/1.1" 404 -
-148.153.56.86 - - [24/Nov/2024 02:15:04] "GET /aab8 HTTP/1.1" 404 -
-148.153.56.86 - - [24/Nov/2024 02:15:05] "GET /jquery-3.3.1.slim.min.js HTTP/1.1" 404 -
-148.153.56.86 - - [24/Nov/2024 02:15:05] "GET /aab9 HTTP/1.1" 404 -
-148.153.56.86 - - [24/Nov/2024 02:15:05] "GET /jquery-3.3.2.slim.min.js HTTP/1.1" 404 -
-180.101.244.15 - - [24/Nov/2024 02:17:44] "GET / HTTP/1.1" 404 -
-180.101.244.12 - - [24/Nov/2024 02:17:44] "GET /j7hS HTTP/1.1" 404 -
-220.196.160.124 - - [24/Nov/2024 02:17:46] "GET / HTTP/1.1" 404 -
-180.101.245.248 - - [24/Nov/2024 02:24:03] "GET /TuNF HTTP/1.1" 404 -
-59.83.208.107 - - [24/Nov/2024 02:24:04] "GET /aab9 HTTP/1.1" 404 -
-220.196.160.65 - - [24/Nov/2024 02:24:06] "GET /aab8 HTTP/1.1" 404 -
- * Detected change in '/home/ubuntu/MQTTMesh/database/app.py', reloading
- * Restarting with stat
-Traceback (most recent call last):
-  File "/home/ubuntu/MQTTMesh/server.py", line 6, in <module>
-    with open("config.yaml", 'r', encoding='utf-8') as file:
-FileNotFoundError: [Errno 2] No such file or directory: 'config.yaml'
+ * Debugger PIN: 875-349-424
+36.248.233.35 - - [24/Nov/2024 16:49:02] "GET /devices HTTP/1.1" 200 -
+36.248.233.35 - - [24/Nov/2024 16:49:02] "GET /favicon.ico HTTP/1.1" 404 -
+87.236.176.198 - - [24/Nov/2024 17:41:27] "GET / HTTP/1.1" 404 -
+129.211.166.142 - - [24/Nov/2024 17:52:26] "GET / HTTP/1.1" 404 -
+120.32.139.57 - - [24/Nov/2024 18:11:15] "GET /devices HTTP/1.1" 200 -
+120.32.139.57 - - [24/Nov/2024 18:11:16] "GET /favicon.ico HTTP/1.1" 404 -
+120.32.139.57 - - [24/Nov/2024 18:11:23] "GET /devices HTTP/1.1" 200 -
+120.32.139.57 - - [24/Nov/2024 18:11:25] "GET /devices HTTP/1.1" 200 -
+129.211.166.142 - - [24/Nov/2024 18:17:45] "GET /devices HTTP/1.1" 200 -
+42.194.226.108 - - [24/Nov/2024 18:25:07] "GET /devices HTTP/1.1" 200 -
+180.163.30.27 - - [24/Nov/2024 19:12:15] "GET / HTTP/1.1" 404 -
+59.77.42.219 - - [24/Nov/2024 19:33:00] "GET /devices HTTP/1.1" 200 -
+59.77.42.219 - - [24/Nov/2024 19:33:00] "GET /favicon.ico HTTP/1.1" 404 -
+59.77.42.161 - - [24/Nov/2024 21:08:27] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:08:27] "GET /favicon.ico HTTP/1.1" 404 -
+59.77.42.161 - - [24/Nov/2024 21:08:32] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
+220.196.160.61 - - [24/Nov/2024 21:13:01] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:38:34] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:38:35] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:41:23] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:41:34] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:41:39] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:42:07] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:42:34] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:43:59] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:48:07] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:48:07] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:48:07] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:48:13] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:48:13] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 21:48:13] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 22:03:39] "GET /devices HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 22:03:39] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
+59.77.42.161 - - [24/Nov/2024 22:03:39] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -

@@ -3,7 +3,10 @@
 
 #include <vector>
 #include <set>
-#include "mqtt_client.h"
+#include <stdlib.h>
+#include <string.h>
+
+class client_t;
 
 class TrieNode
 {

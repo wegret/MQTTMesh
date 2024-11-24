@@ -1,5 +1,6 @@
 #include "mqtt_protocol.h"
 #include "main.h"
+#include "mqtt_client.h"
 #include "trietree.h"
 
 TopicTree topic_tree;
