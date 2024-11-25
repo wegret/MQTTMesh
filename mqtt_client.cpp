@@ -1,5 +1,13 @@
+#include "main.h"
 #include "trietree.h"
 #include "mqtt_client.h"
+
+#if TASK_ENABLE
+#include <string>
+#include <stdexcept>
+#include "database.hpp"
+extern database_t database;
+#endif
 
 /**
  * 函数功能：构造client_t对象
@@ -83,6 +91,13 @@ int client_t::read(const uint8_t& ch){
             }
             fprintf(stderr, "【连接】客户端 %s:%d 建立正确的MQTT Connection\n", ip, fd);
 
+#if TASK_ENABLE
+            char *username = (char*)malloc(32);
+            sprintf(username, "user_%c%c%c", clientid[0], clientid[1], clientid[2]);
+            database.insert_client(clientid, username, ip);
+            free(username);
+#endif
+
             if (send(CONNACK) == MQTT_ERROR)// 发送连接确认包
             {
                 fprintf(stderr, "发送连接确认包失败\n");
@@ -136,6 +151,15 @@ int client_t::read(const uint8_t& ch){
                 std::string message_str(reinterpret_cast<char*>(payload), payload_len);
                 fprintf(stderr, "【消息】客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
                 
+#if TASK_ENABLE
+                try {
+                    float value = std::stof(message_str);
+                    database.update_sensor(clientid, topic_str.c_str(), value);
+                } catch (const std::exception& e) {
+                    fprintf(stderr, "错误：无法将消息转换为浮点数：%s\n", e.what());
+                }
+#endif
+
                 topic_tree.publish((char *)topic, topic_len, (char *)payload, payload_len, this);
             }
             else if (msg_recv.control_type == SUBSCRIBE){

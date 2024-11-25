@@ -111,3 +111,14 @@ Press CTRL+C to quit
 59.77.42.161 - - [24/Nov/2024 23:26:54] "GET /devices HTTP/1.1" 200 -
 59.77.42.161 - - [24/Nov/2024 23:26:54] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
 59.77.42.161 - - [24/Nov/2024 23:26:55] "GET /sensors?ClientID=MzE4MDkyMDkzMjE3MDExOTkyMDczMzc3OTkwNTgyNTk5NjI HTTP/1.1" 200 -
+59.77.42.219 - - [24/Nov/2024 23:58:48] "GET /sensors?ClientID=MzE4NTczOTQ1MjQ1ODEyMDc3MDY2NjQ5NDU3MDI0Njk2MzC HTTP/1.1" 200 -
+59.77.42.219 - - [25/Nov/2024 01:20:32] "GET /devices HTTP/1.1" 200 -
+ * Detected change in '/home/ubuntu/MQTTMesh/server.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 875-349-424
+59.77.42.219 - - [25/Nov/2024 01:21:15] "GET /devices HTTP/1.1" 200 -
+59.77.42.219 - - [25/Nov/2024 01:21:34] "GET /sensors?ClientID=dqscdxrjmowfrxsjybldbef HTTP/1.1" 200 -
+220.196.160.125 - - [25/Nov/2024 01:22:58] "GET /sensors?ClientID=dqscdxrjmowfrxsjybldbef HTTP/1.1" 200 -
+220.196.160.96 - - [25/Nov/2024 01:22:58] "GET / HTTP/1.1" 404 -
+220.196.160.144 - - [25/Nov/2024 01:23:00] "GET / HTTP/1.1" 404 -

@@ -1,6 +1,7 @@
 
 #include "main.h"
 #include "mqtt_client.h"
+#include "database.hpp"
 
 #define DEFAULT_PORT 7776   // 默认端口
 #define MAX_EVENTS 10000    // 最大事件数
@@ -15,6 +16,10 @@ int server_port = DEFAULT_PORT; // 服务器端口
 // int MAX_FD_SIZE;
 // client_t** fd_client_ptr;   // f[fd] 指向 client 的指针
 std::unordered_map<int, client_t*> fd_client_ptr;
+
+#if TASK_ENABLE
+database_t database;
+#endif
 
 void mesh_init(){
     // 改成哈希表好像没用了这段

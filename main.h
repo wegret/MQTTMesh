@@ -21,4 +21,6 @@
 
 void client_remove(int fd);
 
+#define TASK_ENABLE 1
+
 #endif // __MAIN_H__

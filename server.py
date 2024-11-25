@@ -7,7 +7,7 @@ import yaml
 #     config = yaml.safe_load(file)
 port = 8889
 
-db_path = "database/mqtt_db"
+db_path = "mqtt_db"
 
 app = Flask(__name__)
 
