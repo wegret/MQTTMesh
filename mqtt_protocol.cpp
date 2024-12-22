@@ -88,7 +88,7 @@ bool isvalid_clientid(const char *client_id, uint16_t len){
     if (len < 1 || len > 23)    // 长度不合法
         return false;
     for (int i = 0; i < len; i++){
-        if (!('0' <= client_id[i] && client_id[i] <= '9') && !('a' <= client_id[i] && client_id[i] <= 'z') && !('A' <= client_id[i] && client_id[i] <= 'Z'))
+        if (!('0' <= client_id[i] && client_id[i] <= '9') && !('a' <= client_id[i] && client_id[i] <= 'z') && !('A' <= client_id[i] && client_id[i] <= 'Z') && client_id[i] != '_')
             return false;
     }
     return true;

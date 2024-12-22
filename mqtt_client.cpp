@@ -89,7 +89,7 @@ int client_t::read(const uint8_t& ch){
                 memcpy(clientid, payload + 2, client_id_len);
                 clientid[client_id_len] = '\0';
             }
-            fprintf(stderr, "【连接】客户端 %s:%d 建立正确的MQTT Connection\n", ip, fd);
+            cfprintf(stderr, "【连接】客户端 %s:%d 建立正确的MQTT Connection\n", ip, fd);
 
 #if TASK_ENABLE
             char *username = (char*)malloc(32);
@@ -149,7 +149,7 @@ int client_t::read(const uint8_t& ch){
                 
                 std::string topic_str(reinterpret_cast<char*>(topic), topic_len);
                 std::string message_str(reinterpret_cast<char*>(payload), payload_len);
-                fprintf(stderr, "【消息】客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
+                cfprintf(stderr, "【消息】客户端 %s:%d 发布主题 %s 消息 %s\n", ip, fd, topic_str.c_str(), message_str.c_str());
                 
 #if TASK_ENABLE
                 try {
@@ -172,7 +172,7 @@ int client_t::read(const uint8_t& ch){
                 int topic_cnt = 0;
 
 
-                fprintf(stderr, "【订阅】客户端 %s 要求订阅： ", this->clientid);
+                cfprintf(stderr, "【订阅】客户端 %s 要求订阅： ", this->clientid);
                 while (buffer_len >= 2){
                     if (buffer_len < 2){
                         fprintf(stderr, "PUBLISH长度错误\n");
@@ -220,12 +220,13 @@ int client_t::read(const uint8_t& ch){
             }
             /* 心跳请求 */
             else if (msg_recv.control_type == PINGREQ){
-                fprintf(stderr, "【心跳】客户端 %s:%d 发送心跳请求\n", ip, fd);
+                cfprintf(stderr, "【心跳】客户端 %s:%d 发送心跳请求\n", ip, fd);
                 send(PINGRESP); // 发送心跳响应
             }
-            else
+            else{
                 // TODO: 一些处理
-                ;
+                cfprintf(stderr, "【其他】未知消息类型\n");
+            }
         }
 
         msg_recv.clear();

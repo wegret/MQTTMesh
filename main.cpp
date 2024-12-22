@@ -1,5 +1,41 @@
 
 #include "main.h"
+
+// 定义前缀与颜色的对应关系
+const std::unordered_map<std::string, const char*> prefixColorMap = {
+    {"【连接】", GREEN_COLOR},
+    {"【错误】", RED_COLOR},
+    {"【警告】", YELLOW_COLOR},
+    {"【信息】", BLUE_COLOR}
+};
+
+// 辅助函数：根据前缀返回颜色代码
+const char* getColorPrefix(const std::string& prefix) {
+    auto it = prefixColorMap.find(prefix);
+    if (it != prefixColorMap.end()) {
+        return it->second;
+    }
+    return RESET_COLOR;
+}
+
+void cfprintf(FILE* stream, const char* format, ...) {
+    char buffer[1024];
+    va_list args;
+    va_start(args, format);
+    vsnprintf(buffer, sizeof(buffer), format, args);
+    va_end(args);
+
+    std::string msg(buffer);
+    size_t pos = msg.find("】");
+    if (pos != std::string::npos) {
+        std::string prefix = msg.substr(0, pos + 1); // 获取前缀，如 "【连接】"
+        const char* color = getColorPrefix(prefix);
+        fprintf(stream, "%s%s%s", color, buffer, RESET_COLOR);
+    } else {
+        fprintf(stream, "%s", buffer); // 如果没有前缀，则不加颜色
+    }
+}
+
 #include "mqtt_client.h"
 #include "database.hpp"
 
@@ -41,7 +77,7 @@ void client_insert(int fd, const char* ip){
 }
 
 void client_remove(int fd){
-    fprintf(stderr, "【断开】客户机 %s 断开连接\n", fd_client_ptr[fd]->clientid);
+    cfprintf(stderr, "【断开】客户机 %s 断开连接\n", fd_client_ptr[fd]->clientid);
     close(fd);
     if (fd_client_ptr[fd] != nullptr)
         delete fd_client_ptr[fd];
@@ -92,6 +128,13 @@ int main(int argc, char *argv[])
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(server_port);
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY); // 监听所有接口
+
+    if (setsockopt(server_sock, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0)
+    {
+        perror("setsockopt 失败");
+        close(server_sock);
+        exit(EXIT_FAILURE);
+    }
 
     // 绑定套接字
     if (bind(server_sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
@@ -228,7 +271,6 @@ int main(int argc, char *argv[])
                         }
                         else
                         {
-                            perror("recv 失败");
                             client_remove(client_fd);
                             break;
                         }

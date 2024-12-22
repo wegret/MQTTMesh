@@ -1,3 +1,10 @@
 config.yaml
 *.log
 mesh
+mqtt_db
+__pycache__/db_query.cpython-310.pyc
+database/
+*.log
+database/app.py
+simulator.py
+server.log

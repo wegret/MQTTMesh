@@ -36,20 +36,34 @@ def get_sensors():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('''
-        SELECT s.SensorType, s.Value, s.UpdateTime
-        FROM SensorData s
-        WHERE s.ClientID = ?
-        ORDER BY s.UpdateTime DESC
+        SELECT SensorType, Value, UpdateTime
+        FROM (
+            SELECT s.SensorType, s.Value, s.UpdateTime,
+            ROW_NUMBER() OVER (PARTITION BY s.SensorType ORDER BY s.UpdateTime DESC) as rn
+            FROM SensorData s
+            WHERE s.ClientID = ?
+        )
+        WHERE rn <= 20
+        ORDER BY SensorType, UpdateTime DESC;
     ''', (client_id,))
     sensors = cur.fetchall()
     conn.close()
+
     sensor_dict = {}
     for sensor in sensors:
-        if sensor['SensorType'] not in sensor_dict:
-            sensor_dict[sensor['SensorType']] = {
+        sensor_type = sensor['SensorType']
+        if sensor_type not in sensor_dict:
+            # 第一个记录是最新值
+            sensor_dict[sensor_type] = {
                 'Value': sensor['Value'],
-                'UpdateTime': sensor['UpdateTime']
+                'UpdateTime': sensor['UpdateTime'],
+                'history': []
             }
+        # 添加到历史记录
+        sensor_dict[sensor_type]['history'].append({
+            'Value': sensor['Value'],
+            'UpdateTime': sensor['UpdateTime']
+        })
 
     return jsonify(sensor_dict)
 
